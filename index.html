@@ -1,0 +1,45 @@
+<style>
+button, #feedback{
+  display: block;
+  margin: 0.3em auto;
+  font-size: 3em;
+  padding: 0.2em;
+}
+#feedback{
+  width: 80%;
+}
+</style>
+<p><button id="record">Start</button></p>
+<p id="feedback"></p>
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"
+  integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+  crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/binaryjs/0.2.1/binary.min.js"></script>
+<script src="static/recorder.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/annyang/2.6.0/annyang.min.js"></script>
+<script>
+var isRecording = false;
+$(window).keypress(function(e){
+  if(e.which == 32){
+    if(!isRecording){
+      isRecording = true;
+      startRecording();
+      $('#record').text('Stop');
+    }else{
+      isRecording = false;
+      stopRecording();
+      $('#record').text('Start');
+    }
+  }
+});
+if(annyang){
+  annyang.addCommands({
+    'okay toaster': function(){
+      isRecording = true;
+      startRecording();
+      $('#record').text('Stop');
+    }
+  });
+  annyang.start();
+}
+</script>

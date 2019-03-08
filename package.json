@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "node-record-lpcm16": "^0.3.1"
+  }
+}
