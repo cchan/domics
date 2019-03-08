@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "@google-cloud/speech": "^2.3.0",
     "node-record-lpcm16": "^0.3.1"
   }
 }
